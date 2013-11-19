@@ -1,0 +1,23 @@
+<nav-bar-top title="My Social Home">
+      <nav-location href="/home">Home</nav-location>
+	  <nav-location href="#/profile">Manage Apps</nav-location>
+      <nav-location href="#/profile">Profile</nav-location>
+     
+    </nav-bar-top>
+	<div class="hero-unit">
+		<div carousel interval="3000">
+			<div slide ng-repeat="slide in slides" active="slide.active">
+				<img ng-src="{{slide.image}}" style="margin: auto;">
+					<div class="carousel-caption">
+						<h4>{{slide.text}}</h4>
+					</div>
+			</div>
+		</div> 
+	</div>
+	<div class="row1">
+		<!--<div class="tile" ng-repeat="grid in grids" ng-class="{flipped: tile.flipped}"> <h2 class='t'>{{grid.title}} </h2> </div>
+	<div id="time"> {{ date }} </div> -->
+		
+	</div>
+	
+	
