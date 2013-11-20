@@ -7,7 +7,7 @@ angular.module('myApp.controllers', []).
 	  //Carousel
 	  $scope.slides = [];
 	  $scope.slides.push({text: 'All your tasks brought to you at one place', image: 'img/todocarousel.jpg'});
-	  $scope.slides.push({text: 'Manage your tasks effectively', image: 'img/carousel2.png'});
+	  $scope.slides.push({text: 'Manage your tasks effectively', image: 'img/carousel2withtxt.jpg'});
 	  $scope.slides.push({text: 'Wake up with this app on your tablet', image: 'img/clockcarousel.jpg'});
 	  
 	  $scope.setActive = function(idx) {
