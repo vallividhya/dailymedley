@@ -21,6 +21,9 @@ function getCalendarDetails() {
 	});
 	restRequest.execute (function(resp) { console.log(resp); });
 }
+function handleClientLoad() {
+	gapi.client.setApiKey('AIzaSyC4WwU12AuPI0BuXrAH6fg5AsxpYydXcrs');
+}
  </script>
   <script> 
 	function Tile() {
@@ -41,6 +44,6 @@ function getCalendarDetails() {
   </ul>-->
   	<div ng-view></div>
 <button onClick="getCalendarDetails()"> My Calendar</button>
-    
+     <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
  </body>
 </html>
