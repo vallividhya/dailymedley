@@ -13,6 +13,15 @@
   <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
+  <script text="text/javascript">
+function getCalendarDetails() {
+	var restRequest = gapi.client.request({
+		'path':' https://www.googleapis.com/calendar/v3/calendars/vallividhyavenkatesan%40gmail.com/events',
+		'params':{'key':'AIzaSyC4WwU12AuPI0BuXrAH6fg5AsxpYydXcrs'}
+	});
+	restRequest.execute (function(resp) { console.log(resp); });
+}
+ </script>
   <script> 
 	function Tile() {
 		this.flipped = false;
@@ -31,7 +40,7 @@
     <li><a href="#/view2">view2</a></li>
   </ul>-->
   	<div ng-view></div>
-
+<button onClick="getCalendarDetails()"> My Calendar</button>
     
  </body>
 </html>

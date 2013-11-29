@@ -127,9 +127,10 @@ border:2px solid #A9A9A9;
       }
       #services {
 		position: absolute;
+		width:200px;
 		top: 600px;
 		height: 35px;
-		left: 670px;
+		left: 770px;
 		right: 0px;
 		text-align: center;
 		padding-top: 2px;
