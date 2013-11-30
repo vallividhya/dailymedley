@@ -5,7 +5,7 @@
   </head>
   <body>
     <!--Add a button for the user to click to initiate auth sequence -->
-    <button id="authorize-button">Authorize</button>
+    <button id="authorize-button" onclick="checkAuth()">Authorize</button>
     <script type="text/javascript">
       // Enter a client ID for a web application from the Google Developer Console.
       // The provided clientId will only work if the sample is run directly from
@@ -27,7 +27,7 @@
       // Use a button to handle authentication the first time.
       function handleClientLoad() {
         gapi.client.setApiKey(apiKey);
-        window.setTimeout(checkAuth,1);
+       // window.setTimeout(checkAuth,1);
       }
 
       function checkAuth() {
