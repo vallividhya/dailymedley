@@ -66,8 +66,8 @@
             var desc = document.createElement('h2');
 			var respJson = JSON.stringify(resp);
 			console.log('Response: '+ respJson);
-            //desc = resp.items.length;
-			desc = resp.items[0].summary;
+            desc = resp.items.length;
+			//desc = resp.items[0].summary;
 			console.log("Num of items = " + desc);
             //heading.appendChild(desc);
            // heading.appendChild(document.createTextNode(resp.summary));
