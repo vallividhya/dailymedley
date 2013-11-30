@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset='utf-8' />
+	<script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
   </head>
   <body>
     <!--Add a button for the user to click to initiate auth sequence -->
@@ -67,6 +68,7 @@
 			var respJson = JSON.stringify(resp);
 			console.log('Response: '+ respJson);
             desc = resp.items.length;
+			//desc = resp.items[0].summary;
 			var parsedjson = JSON.parse(respJson);
 			var output = '';
 			console.log("Num of items = " + desc);
@@ -74,13 +76,29 @@
 			for (var i=0; i< desc; i++) {
 					output+= parsedjson.items[i].summary;
 					output+= '<br>';
-			}		
+				}
+			/*$.each(parsedjson, function(idx, obj) {
+				//alert(obj.summary);
+				var itemArray = $.parseJSON(obj.items);
+				for (var i=0; i< desc; i++) {
+					output+= itemArray[i].summary;
+					output+= '<br>';
+				}
+			});*/
+			
+			
 			$('#ev').html(output);
+            //heading.appendChild(desc);
+           // heading.appendChild(document.createTextNode(resp.summary));
+
+            //document.getElementById('content').appendChild(heading);
           });
         });
       }
     </script>
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+    <div id="content"></div>
+    <p>Your daily schedule.</p>
 	<div id="ev"></div>
   </body>
 </html>
