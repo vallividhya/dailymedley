@@ -73,6 +73,10 @@
 			var output = '';
 			console.log("Num of items = " + desc);
 			alert(parsedjson.items[0].summary);
+			for (var i=0; i< desc; i++) {
+					output+= parsedjson.items[i].summary;
+					output+= '<br>';
+				}
 			/*$.each(parsedjson, function(idx, obj) {
 				//alert(obj.summary);
 				var itemArray = $.parseJSON(obj.items);
