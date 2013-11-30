@@ -61,8 +61,8 @@
           request.execute(function(resp) {
             var heading = document.createElement('h4');
             var desc = document.createElement('h2');
-			console.log(resp);
-            desc = resp.items;
+			console.log('Response: '+ resp);
+            desc = resp.items.length;
 			console.log("Num of items = " + desc);
             //heading.appendChild(desc);
            // heading.appendChild(document.createTextNode(resp.summary));
