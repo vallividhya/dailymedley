@@ -38,7 +38,7 @@
       function handleAuthResult(authResult) {
         var authorizeButton = document.getElementById('authorize-button');
         if (authResult && !authResult.error) {
-          authorizeButton.style.visibility = 'hidden';
+          //authorizeButton.style.visibility = 'hidden';
           makeApiCall();
         } else {
           authorizeButton.style.visibility = '';
@@ -60,11 +60,14 @@
 			'timeMax':'2013-12-1T11:59:00.0z',
 			'timeMin':'2013-12-1T12:00:00.0z'
           });
+		  console.log('Request: ' + JSON.stringify(request));
           request.execute(function(resp) {
             var heading = document.createElement('h4');
             var desc = document.createElement('h2');
-			console.log('Response: '+ resp);
-            desc = resp.items.length;
+			var respJson = JSON.stringify(resp);
+			console.log('Response: '+ respJson);
+            //desc = resp.items.length;
+			desc = resp.items[0].summary;
 			console.log("Num of items = " + desc);
             //heading.appendChild(desc);
            // heading.appendChild(document.createTextNode(resp.summary));
