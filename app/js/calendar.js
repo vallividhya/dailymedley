@@ -61,12 +61,12 @@
 			var parsedjson = JSON.parse(respJson);
 			var output = '';
 			console.log("Num of items = " + desc);
-			alert(parsedjson.items[0].summary);
 			for (var i=0; i< desc; i++) {
 					output+= parsedjson.items[i].summary;
 					output+= '<br>';
 			}		
 			$('#ev').html(output);
+			$('#authorize-button').hide();
           });
         });
       }
