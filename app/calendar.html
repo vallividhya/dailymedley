@@ -69,7 +69,7 @@
 			console.log('Response: '+ respJson);
             desc = resp.items.length;
 			//desc = resp.items[0].summary;
-			var parsedjson = JSON.parse(resp);
+			var parsedjson = JSON.parse(respJson);
 			var output = '';
 			console.log("Num of items = " + desc);
 			alert(parsedjson.items[0][summary]);
