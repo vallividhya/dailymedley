@@ -70,6 +70,9 @@
             desc = resp.items.length;
 			//desc = resp.items[0].summary;
 			console.log("Num of items = " + desc);
+			$.each($.parseJSON(resp), function(idx, obj) {
+				alert(obj.summary);
+			});
 			var output = '';
 			for(var i=0; i<desc; i++) {
 				output+= items[i].summary;
