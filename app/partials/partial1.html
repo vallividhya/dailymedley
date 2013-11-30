@@ -41,6 +41,12 @@
 			<h2>Today is </h2> <br>
 			<h2>{{v.Dt | date:'MM - dd - yyyy'}}<h2> <br />
 		</div>
+	</div>
+	<div id="calendar" class='grid'>
+		<button id="authorize-button" onclick="checkAuth()">Authorize</button>
+		<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+		<div id="ev"></div>
+	</div>
 	<div> 
 		<a href="http://www.google.com/" target="_parent"><div id="google">&nbsp;</div></a>
 		<div id="services" class="s-top">
@@ -70,6 +76,6 @@
 		</div>
 		</div>
 		
-	</div>
+	
 	
 	
