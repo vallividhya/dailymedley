@@ -13,7 +13,7 @@
       var apiKey = 'AIzaSyC4WwU12AuPI0BuXrAH6fg5AsxpYydXcrs';
 
       // To enter one or more authentication scopes, refer to the documentation for the API.
-      var scopes = 'https://www.googleapis.com/auth/calendar';
+      var scopes = ['https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/tasks'];
 
       // Use a button to handle authentication the first time.
       function handleClientLoad() {
