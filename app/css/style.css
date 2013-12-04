@@ -141,7 +141,30 @@
 	.check-list
 	{
 	}
-
+		.calendarimg
+		{
+			padding: 0.7em 0 0 45px;
+			font-size: 1.2em;
+			margin-bottom: -35px;
+			margin-top: -25px;
+			background: url('images/icon-event.png') 0px 1.05em no-repeat;			
+		}
+		.calendar-event 
+		{
+			padding: 0.1em 0 0.7em 5px;
+			font-size: 1.2em;
+					
+		}
+		.calendar-event  li
+		{
+			font-size: 1.2em;
+			line-height: 30px;
+		}
+		#stTime {
+			font-size: 0.6em;
+			color:#a02828;
+			font-family: monospace;
+		}
 		.check-list li
 		{
 			padding: 0.7em 0 0.7em 45px;
@@ -150,29 +173,30 @@
 			line-height: 30px;
 		}
 		
-		.check-list li:first-child
+		.check-list li:first-child, .calendar-event  li:first-child
 		{
 			padding-top: 0 !important;
 			border-top: 0 !important;
 			background-position: 0 0.3em;
 		}
 
-		.check-list li:last-child
+		.check-list li:last-child, .calendar-event li:last-child
 		{
 			padding-bottom: 0 !important;
 			border-bottom: 0 !important;
 		}
 
-		#content .check-list li
+		#content .check-list li, #content .calendar-event li
 		{
 			border-bottom: solid 1px #e2e6e8;
 		}
 
-		#footer .check-list li
+		#footer .check-list li 
 		{
 			border-top: solid 1px #e0e4e6;
 			border-bottom: solid 1px #b5bec3;
 		}
+		
 		
 	.feature-image
 	{

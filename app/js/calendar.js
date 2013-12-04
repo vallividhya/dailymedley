@@ -21,33 +21,33 @@ var scopes = ['https://www.googleapis.com/auth/calendar', 'https://www.googleapi
 function handleClientLoad() {
 	console.log("In handleClientLoad");
 	gapi.client.setApiKey(apiKey);
+	window.setTimeout(checkAuth, 1);
 }
 
 function checkAuth() {
-	console.log("In check auth");
+	console.log("In checkAuth");
+	gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult); 
+}
+
+function forceAuth() {
+	console.log("In forceAuth");
 	gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult); 
 }
 
 function handleAuthResult(authResult) {
 	console.log('Button click called handleAuthResult');
 
-	if (authResult) {
-		if (!authResult.error) {
-			gapi.auth.setToken(authResult);
-			userLoggedIn = true;
-			localStorage.setItem('dm_user_loggedIn', true);
-			doSomething();
-		} else {
-			console.log('Auth result has error.');			
-			localStorage.setItem('dm_user_loggedIn', false);
-		}
+	if (authResult && !authResult.error) {
+		gapi.auth.setToken(authResult);
+		doSomething();
 	} else {
-		console.log('Auth result is null.');
+		console.log('Auth result is null or has error.');
 	}
 }
 function doSomething() {
 	console.log('In do func');
-	$('#authorize-button').hide();
+	$('#esign').hide();
+	$('#tb').show();
 	populateUserInfo();
 }
 function populateUserInfo() {
@@ -57,19 +57,21 @@ function populateUserInfo() {
 		localStorage.setItem('dm_user_loggedIn', true);
 			var emailId = resp['email'];
 			getCalendarEvents(emailId);
-	
 		});
 	});
 }
 	
 // Load the API and make an API call.  Display the results on the screen.
 function getCalendarEvents(emailId) {
-	var tm = new Date();
+	var timeMini = moment().format("YYYY-MM-DD") + 'T7:59:59.0z';
+	var tm = moment().add('d',1);
+	var timeMaxi = tm.format("YYYY-MM-DD") + 'T8:00:00.0z';	
+	console.log("TImeMin : " + timeMini + "TimeMax: " + timeMaxi);
 	gapi.client.load('calendar', 'v3', function() {
 		var request = gapi.client.calendar.events.list({
 			'calendarId': emailId,
-			'timeMax':'2013-12-5T7:59:59.0z',
-			'timeMin':'2013-12-4T8:00:00.0z',
+			'timeMax':timeMaxi,
+			'timeMin':timeMini,
 			'singleEvents':true,
 			'orderBy':'startTime'
 		});
@@ -78,22 +80,99 @@ function getCalendarEvents(emailId) {
 			var heading = document.createElement('h4');
 			var desc = document.createElement('h2');
 			var respJson = JSON.stringify(resp);
-			desc = resp.items.length;
-			var parsedjson = JSON.parse(respJson);
-			console.log(parsedjson);
-			var output = '';
-			output += '<ul class="check-list">';
-			for (var i=0; i< desc; i++) {
-				output += '<li>';
-				output+= parsedjson.items[i].summary;
-				output += '</li>';
+			if(resp.items != null) {
+				desc = resp.items.length;
+				}
+				var parsedjson = JSON.parse(respJson);
+				console.log(parsedjson);
+				var output = '';
+				output += '<ul class="calendar-event">';
+				for (var i=0; i< desc; i++) {
+					output += '<li>';
+					output+= parsedjson.items[i].summary;
+					var start = parsedjson.items[i].start;
+					var startJson = JSON.stringify(start);
+					var parsedStart = JSON.parse(startJson);
+					//console.log(parsedStart.dateTime);
+					var sta = moment(parsedStart.dateTime).format("hh:mm A");
+					output+= '<div id="stTime">';
+					output+= sta;
+					output += ' - ';
+					var end = parsedjson.items[i].end;
+					var endJson = JSON.stringify(end);
+					var parsedEnd = JSON.parse(endJson);
+					//console.log(parsedStart.dateTime);
+					var endt = moment(parsedEnd.dateTime).format("hh:mm A");
+					output += endt;
+					output += '</div>';
+					output += '</li>';
 			}	
 			output += '</ul>';
 			$('#ev').html(output);
 			$('#authorize-button').hide();
+			
+		});
+	});
+	getWeekEvents(emailId);
+	
+}
+
+function getWeekEvents(emailId) {
+	var timeMini = moment().format("YYYY-MM-DD") + 'T7:59:59.0z';
+	var tm = moment().add('d',7);
+	var timeMaxi = tm.format("YYYY-MM-DD") + 'T8:00:00.0z';	
+	console.log("TImeMin : " + timeMini + "TimeMax: " + timeMaxi);
+	gapi.client.load('calendar', 'v3', function() {
+		var request = gapi.client.calendar.events.list({
+			'calendarId': emailId,
+			'timeMax':timeMaxi,
+			'timeMin':timeMini,
+			'singleEvents':true,
+			'orderBy':'startTime'
+		});
+
+		request.execute(function(resp) {
+			var heading = document.createElement('h4');
+			var desc = document.createElement('h2');
+			var respJson = JSON.stringify(resp);
+			if(resp.items != null) {
+				desc = resp.items.length;
+				}
+				var parsedjson = JSON.parse(respJson);
+				console.log(parsedjson);
+				var output = '';
+				output += '<ul class="calendar-event">';
+				for (var i=0; i< desc; i++) {
+					output += '<li>';
+					output+= parsedjson.items[i].summary;
+					var start = parsedjson.items[i].start;
+					var startJson = JSON.stringify(start);
+					var parsedStart = JSON.parse(startJson);
+					//console.log(parsedStart.dateTime);
+					var sta = moment(parsedStart.dateTime).format("hh:mm A");
+					output+= '<div id="stTime">';
+					output+= sta;
+					output += ' - ';
+					var end = parsedjson.items[i].end;
+					var endJson = JSON.stringify(end);
+					var parsedEnd = JSON.parse(endJson);
+					//console.log(parsedStart.dateTime);
+					var endt = moment(parsedEnd.dateTime).format("hh:mm A");
+					output += endt;
+					output += '</div>';
+					output += '</li>';
+			}	
+			output += '</ul>';
+			$('#week').click(showWeekEvents(output));
 		});
 	});
 	getTasksList();
+}
+
+function showWeekEvents(disp) {
+	var weekdisp = disp;
+	$('#ev').html(weekdisp);
+	$('#calnav a:last').tab('show');
 }
 
 function getTasksList() {
@@ -137,12 +216,43 @@ function showTasks(lid) {
 			var desc = resp.items.length;
 			var parsedjson = JSON.parse(respJson);
 			var output = '';
+			output += '<ul class="check-list">';
 			console.log("Num of items = " + desc);
 			for (var i=0; i< desc; i++) {
+				output += '<li>';
 				output+= parsedjson.items[i].title;
-				output+= '<br>';
-			}		
+				output+= '</li>';
+			}
+				
 			$('#tasklist').html(output);
+			$('#bk').show();
 		});
 	});	  
 }
+
+function showLists() {
+	gapi.client.load('tasks', 'v1', function() {
+		var request = gapi.client.tasks.tasklists.list();
+		request.execute(function(resp) {
+			var respJson = JSON.stringify(resp);
+			var desc = resp.items.length;
+			var parsedjson = JSON.parse(respJson);
+			var output = '';
+			console.log("Num of items = " + desc);
+			output += '<ul class="check-list">';
+			for (var i=0; i< desc; i++) {
+				var tlistid = parsedjson.items[i].id;
+				output+= '<li class="button-small" id="' + tlistid + '" onclick="showTasks('+ tlistid +')">';
+				output+= parsedjson.items[i].title;
+				output+= '    >>';
+				output+= '</li>';
+				output+= '<br>';
+			}
+				output += '</ul>';	
+			$('#bk').hide();				
+			$('#tasklist').html(output);
+		});
+	});
+}
+
+

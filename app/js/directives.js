@@ -34,12 +34,7 @@ var myApp =angular.module('myApp.directives', []);
     scope: {
       'href': '@'
     },
-    link: function (scope) {
-      scope.location = function (href) {
-        return href.substr(1) === $location.url();
-      };
-    },
-    template:  '<a ng-class="{active:location(href)}" ng-transclude></a>',
+    template:  '<a ng-transclude></a>',
     replace: true
   };
 });

@@ -40,9 +40,15 @@ function showWeather(position) {
 			console.log("Current location is " + parsedJson);
 			var location = parsedJson['current_observation']['display_location']['city'];
 			var temp_f = parsedJson['current_observation']['temp_f'];
+			var weathe = parsedJson['current_observation']['weather'];
+			var feelslike = parsedJson['current_observation']['feelslike_f'];
 			//alert("Current temperature in " + location + " is: " + temp_f);
 			var output = '';
-				output += temp_f;
+			output += '<ul class="calendar-event">';
+			output += '<li> Tempature:      <span class="att">' + temp_f + '</span></li>';
+			output += '<li> Weather:        <span class="att">' + weathe + '</span></li>';
+			output += '<li> Feels like:     <span class="att">' + feelslike + '</span></li>';
+			output += '</ul>';
 			$('#loc').html(location);
 			$('#weather').html(output);
 		}

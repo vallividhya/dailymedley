@@ -2,10 +2,9 @@
 	<nav-bar-top title="Daily Medley">
 		<nav-location id="esh" href="/home">Home</nav-location>
 		<nav-location href="#">View Page In Spanish </nav-location>
-		<nav-location id="esign" href="#" onclick="checkAuth()">Sign In</nav-location>
+		<nav-location id="esign" onclick="forceAuth()">Sign In</nav-location>
 		<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 	</nav-bar-top>
-	<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 <div id="banner">
 	<div class="hero-unit">
 	<div carousel interval="3000">
@@ -53,22 +52,27 @@
 						</p>	
 					</section>
 				</div>
-				<div class="4u">
+				<div class="4u" id="cal">
 					<section>
 						<header>
-							<h2>Calendar</h2>							
-						</header>
-						<p class="text-center">
-							<p id="ev">
-								Sign In to your Google Account to view Calendar events
-							</p>
-						</p>	
+							<h2 class="calendarimg">Calendar</h2>							
+						</header>			
+						<div>	
+							<div id="tb">
+								<ul id="calnav" class="nav nav-tabs">
+									<li class="active" id="navtod"><a> Today</a></li>
+									<li><a id="week">Week</a></li>									
+								</ul>
+							</div>
+							<p id="ev">Sign In to your Google Account to view Calendar events</p>	
+						</div>							
 					</section>
 				</div>
 				<div class="4u" ng-controller="DateCtrl">
 					<section>
 						<header>
-							<h2>Tasks</h2>							
+							<h2>Tasks</h2>
+								<div onclick="showLists()" id="bk">Task Lists</div>							
 						</header>
 						<div id='tasks'>
 							<p id="tasklist">
@@ -84,10 +88,11 @@
 		<div class="container">
 			<div class="row">
 				
-				<div class="4u">
+				<div class="4u" id="cli">
 					<section>
 						<header>
-							<h2>Weather</h2>
+							<h2 class="weatheimg">Weather</h2>
+								<img src="css/images/clear.gif" width:"50px" height:"50px"/>
 								<h3 id="loc"><h3>
 						</header>
 						<p class="text-center">
