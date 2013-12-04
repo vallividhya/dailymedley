@@ -170,9 +170,11 @@ function getWeekEvents(emailId) {
 }
 
 function showWeekEvents(disp) {
+	console.log('fired showweekevents');
 	var weekdisp = disp;
+	//$('#evw').show();
+	console.log(weekdisp);
 	$('#ev').html(weekdisp);
-	$('#calnav a:last').tab('show');
 }
 
 function getTasksList() {
