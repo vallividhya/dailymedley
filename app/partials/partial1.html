@@ -1,81 +1,110 @@
-<nav-bar-top title="My Social Home">
-      <nav-location href="/home">Home</nav-location>
-	  <nav-location href="#/profile">Manage Apps</nav-location>
-      <nav-location href="#/profile">Profile</nav-location>
-     
-    </nav-bar-top>
-	<div class="hero-unit">
-		<div carousel interval="3000">
-			<div slide ng-repeat="slide in slides" active="slide.active">
-				<img ng-src="{{slide.image}}" style="margin: auto;">
-					<div class="carousel-caption">
-						<h4>{{slide.text}}</h4>
-					</div>
-			</div>
-		</div> 
-	</div>
-	<div class="row1">
-		<!--<div class="tile" ng-repeat="grid in grids" ng-class="{flipped: tile.flipped}"> <h2 class='t'>{{grid.title}} </h2> </div>
-	<div id="time"> {{ date }} </div> -->
-	<div id='todo' class='grid'>
-		<h2>Todo</h2>
-			<div ng-controller="TodoCtrl">
-			  <span>{{remaining()}} of {{todos.length}} remaining</span>
-			  [ <a href="" ng-click="archive()">archive</a> ]
-			  <ul class="unstyled">
-				<li ng-repeat="todo in todos">
-				  <input type="checkbox" ng-model="todo.done">
-				  <span class="done-{{todo.done}}">{{todo.text}}</span>
-				</li>
-			  </ul>
-			  <form ng-submit="addTodo()">
-				<input type="text" ng-model="todoText"  size="30"
-					   placeholder="add new todo here">
-				<input class="btn-primary" type="submit" value="add">
-			  </form>
-			</div> 
-	</div>
-	
-	<div id="date" class='grid'> 
-		<div ng-controller="DateCtrl">
-			<h2>Today is </h2> <br>
-			<h2>{{v.Dt | date:'MM - dd - yyyy'}}<h2> <br />
-		</div>
-	</div>
-	<div id="calendar" class='grid'>
-		<button id="authorize-button" onclick="checkAuth()">Sign In Using Google</button>
+<div id="header-wrapper">
+	<nav-bar-top title="Daily Medley">
+		<nav-location id="esh" href="/home">Home</nav-location>
+		<nav-location href="#">View Page In Spanish </nav-location>
+		<nav-location id="esign" href="#" onclick="checkAuth()">Sign In</nav-location>
 		<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
-		<div id="ev"></div>
+	</nav-bar-top>
+	<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+<div id="banner">
+	<div class="hero-unit">
+	<div carousel interval="3000">
+		<div slide ng-repeat="slide in slides" active="slide.active">
+			<img ng-src="{{slide.image}}" style="margin: auto;">
+			<div class="carousel-caption">
+				<h4>{{slide.text}}</h4>
+			</div>
+		</div>
+	</div> 
+</div> 
+</div>
+</div>
+<div id="content-wrapper">
+	<div id="content">	
+		<div class="container">
+			<div class="row">
+				<div class="4u" ng-controller="DateCtrl">
+					<section>
+						<header>
+							<h2 id="esc">Clock</h2>
+							<h3>Today is <span class="d"> {{v.Dt | date:'MMM  dd , yyyy'}} </span></h3>
+						</header>
+						<p class="text-center">
+							
+							<object data="img/siemens-clock.svg" type="image/svg+xml" width="200" height="200">
+								<param name="dial"               value="din 41091.1"/>
+								<param name="hourHand"           value="siemens"/>
+								<param name="minuteHand"         value="siemens"/>
+								<param name="secondHand"         value="din 41071.2"/>
+								<param name="minuteHandBehavior" value="stepping"/>
+								<param name="secondHandBehavior" value="swinging"/>
+								<param name="secondHandStopToGo" value="yes"/>
+								<param name="secondHandStopTime" value="1.5"/>
+								<param name="backgroundColor"    value="rgba(0,0,0,0)"/>
+								<param name="dialColor"          value="rgb(39,40,40)"/>
+								<param name="hourHandColor"      value="rgb(20,20,20)"/>
+								<param name="minuteHandColor"    value="rgb(20,20,20)"/>
+								<param name="secondHandColor"    value="rgb(160, 50, 40)"/>
+								<param name="axisCoverColor"     value="rgb(20,20,20)"/>
+								<param name="axisCoverRadius"    value="7"/>
+								<param name="updateInterval"     value="50"/>
+							</object>
+							
+						</p>	
+					</section>
+				</div>
+				<div class="4u">
+					<section>
+						<header>
+							<h2>Calendar</h2>							
+						</header>
+						<p class="text-center">
+							<p id="ev">
+								Sign In to your Google Account to view Calendar events
+							</p>
+						</p>	
+					</section>
+				</div>
+				<div class="4u" ng-controller="DateCtrl">
+					<section>
+						<header>
+							<h2>Tasks</h2>							
+						</header>
+						<div id='tasks'>
+							<p id="tasklist">
+								Sign In to your Google Account to view Tasks
+							</p>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>						
 	</div>
-	<div> 
-		<a href="http://www.google.com/" target="_parent"><div id="google">&nbsp;</div></a>
-		<div id="services" class="s-top">
-		  <a class="SVC" id="PLUS"      href="https://plus.google.com/"           title="Google Plus"             target="_parent">&nbsp;</a>
-		  <a class="SVC" id="GWS"       href="https://www.google.com/"            title="Google.com"              target="_parent">&nbsp;</a>
-		  <a class="SVC" id="IMG"       href="https://www.google.com/imghp"       title="Google Image Search"     target="_parent">&nbsp;</a>
-		  <a class="SVC" id="MAPS"      href="https://www.google.com/maps"        title="Google Maps"             target="_parent">&nbsp;</a>
-		  <a class="SVC" id="NEWS"      href="https://news.google.com"            title="Google News"             target="_parent">&nbsp;</a>
-		  <a class="SVC" id="FINANCE"   href="https://www.google.com/finance"     title="Google Finance"          target="_parent">&nbsp;</a>
-		  <a class="SVC" id="PROD"      href="https://www.google.com/products"    title="Google Product Search"   target="_parent">&nbsp;</a>
-		  <a class="SVC" id="BMKS"      href="https://www.google.com/bookmarks"   title="Google Bookmarks"        target="_parent">&nbsp;</a>
-		  <a class="SVC" id="TRANSLATE" href="https://www.google.com/translate"   title="Google Translate"        target="_parent">&nbsp;</a>
-		  <a class="SVC" id="OFFERS"    href="https://www.google.com/offers/"     title="Google Offers"           target="_parent">&nbsp;</a>
-		</div>
+	<div id="content2">	
+		<div class="container">
+			<div class="row">
+				
+				<div class="4u">
+					<section>
+						<header>
+							<h2>Weather</h2>
+								<h3 id="loc"><h3>
+						</header>
+						<p class="text-center">
+							<p id="weather">
+								
+							</p>
+						</p>	
+					</section>
+				</div>
+			</div>
+		</div>						
+	</div>
+</div>
 
-		<div id="services" class="s-bottom">
-		  <a class="SVC" id="GMAIL"     href="https://mail.google.com/"           title="Gmail"                   target="_parent">&nbsp;</a>
-		  <a class="SVC" id="DRIVE"     href="https://drive.google.com/"          title="Google Drive"            target="_parent">&nbsp;</a>
-		  <a class="SVC" id="VOICE"     href="https://www.google.com/voice/"      title="Google Voice"            target="_parent">&nbsp;</a>
-		  <a class="SVC" id="CWS"       href="https://chrome.google.com/webstore?utm_source=ntp-extension&utm_medium=awesome-new-tab-page" title="Chrome Web Store" target="_parent">&nbsp;</a>
-		  <a class="SVC" id="PLAY"      href="https://play.google.com/"           title="Google Play"             target="_parent">&nbsp;</a>
-		  <a class="SVC" id="MUSIC"     href="https://music.google.com/"          title="Google Play Music"       target="_parent">&nbsp;</a>
-		  <a class="SVC" id="YT"        href="https://www.youtube.com/"           title="YouTube"                 target="_parent">&nbsp;</a>
-		  <a class="SVC" id="PICASA"    href="https://picasaweb.google.com/"      title="Picasa"                  target="_parent">&nbsp;</a>
-		  <a class="SVC" id="CAL"       href="https://www.google.com/calendar/"   title="Google Calendar"         target="_parent">&nbsp;</a>
-		  <a class="SVC" id="WALLET"    href="https://wallet.google.com/manage/"  title="Google Wallet"           target="_parent">&nbsp;</a>
-		</div>
-		</div>
-		
-	
-	
-	
+
+
+
+
+
+

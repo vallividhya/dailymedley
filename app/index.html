@@ -1,39 +1,43 @@
 <!doctype html>
 <html lang="en" ng-app="myApp">
 <head>
-  <meta charset="utf-8">
-  <title>My Social Home</title>
-   <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>-->
-   <script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
-   <script src="lib/angular/angular.js"></script>
-  <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.4.0/ui-bootstrap-tpls.min.js"></script>
-   <script src="lib/angular/angular-route.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/services.js"></script>
-  <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
-  <script src="js/calendar.js"></script>
-  <script> 
-	function Tile() {
-		this.flipped = false;
-	}
-	Tile.prototype.flip = function() {this.flipped = !this.flipped;}
-	
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="A task management app to organize all your tasks efficiently | Google Services all at one place | Look and feel of your favorite Android widgets" />
+<meta name="keywords" content="task management, android style, widgets, dashboard, all at one place, quick links, calendar, todo, weather, time" />
+<title>Daily Medley - A Task Management App</title>
 
-  </script>
-   <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"/>
-   <link rel="stylesheet" href="css/app.css"/>	 
-   </head>
+<script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+<script src="lib/angular/angular.js"></script>
+<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.4.0/ui-bootstrap-tpls.min.js"></script>
+<script src="lib/angular/angular-route.js"></script>
+<script src="js/app.js"></script>
+<script src="js/services.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/directives.js"></script>
+<script src="js/calendar.js"></script>
+<script src="js/weather.js"></script>
+<script src="js/config.js"></script>
+<script src="js/skel.min.js"></script>
+<script src="js/skel-panels.min.js"></script>
+
+<noscript>
+<link rel="stylesheet" href="css/skel-noscript.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/style-desktop.css" />
+</noscript>
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="css/app.css"/>	 
+
+</head>
 <body>
-	<!-- 
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>-->
-  	<div ng-view></div>
-
-     <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
- </body>
+<!-- 
+<ul class="menu">
+<li><a href="#/view1">view1</a></li>
+<li><a href="#/view2">view2</a></li>
+</ul>-->
+	<div ng-view></div>
+	<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+</body>
 </html>

@@ -1,6 +1,39 @@
-/* app css stylesheet */
+/* app css stylesheet 
 
-body {margin:0 auto; text-align:center;}
+body {margin:0 auto; text-align:center;} */
+body
+	{
+		background: #D4D9DD url('images/bg03.jpg');
+	}
+
+	body, input, textarea, select
+	{
+		color: #474f51;
+		font-size: 13.5pt;
+		font-family: 'Yanone Kaffeesatz';
+		line-height: 1.85em;
+		font-weight: 300;
+	}
+	
+	ul, ol, p, dl
+	{
+		margin: 0 0 2em 0;
+	}
+
+	a
+	{
+		text-decoration: underline;
+	}
+	
+	a:hover
+	{
+		text-decoration: none;
+	}
+
+	section > :last-child, .last-child
+	{
+		margin-bottom: 0 !important;
+	}
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -30,8 +63,8 @@ body {margin:0 auto; text-align:center;}
   padding: 0;
 }
 .nav, .pagination, .carousel a { cursor: pointer; }
-.hero-unit {width:550px; height:350px;margin:0 auto;}
-
+.hero-unit {width:550px; height:350px;margin:0 auto; background-color: inherit; padding: 0px;}
+.carousel-indicators { top:300px; right:265px;}
 .gridface {
   width: 100%;
   height: 100%;
@@ -100,7 +133,7 @@ body {margin:0 auto; text-align:center;}
   color: grey;
 }
 .grid {
-border:2px solid #A9A9A9;
+	border:2px solid #A9A9A9;
 	border-radius: 5px 10px 5px 10px / 10px 5px 10px 5px;
 	border-radius: 5px;
 	border-radius: 5px 10px / 10px;

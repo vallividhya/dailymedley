@@ -16,14 +16,14 @@ var myApp =angular.module('myApp.directives', []);
       'title': '@'
     },
     template:
-      '<div class="navbar navbar-fixed-top">' +
-        '<div class="navbar-inner">' +
-          '<div class="container">' +
-            '<a class="brand" href="#/">{{title}}</a>' +
-            '<ul class="nav" ng-transclude></ul>' +
-          '</div>' +
-        '</div>' +
-      '</div>',
+		'<header id="header" class="container">'+
+					'<div class="row">' +
+						'<div class="12u">' +
+						'<h1><a href="#" id="logo">{{title}}</a></h1>'+
+						'<nav id="nav" class="nav" ng-transclude>' + '</nav>'+
+					 '</div>'
+					+ '</div>' +
+		'</header>',
     replace: true
   };
 });
@@ -39,9 +39,7 @@ var myApp =angular.module('myApp.directives', []);
         return href.substr(1) === $location.url();
       };
     },
-    template: '<li ng-class="{active: location(href)}">' +
-        '<a href="{{href}}" ng-transclude></a>' +
-      '</li>',
+    template:  '<a ng-class="{active:location(href)}" ng-transclude></a>',
     replace: true
   };
 });

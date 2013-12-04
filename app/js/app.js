@@ -12,7 +12,7 @@ angular.module('myApp', [
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/home', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
-  $routeProvider.when('/view2', {templateUrl: 'partials/GoogleJSClient.html', controller: 'MyCtrl2'});
+  $routeProvider.when('/home_es', {templateUrl: 'partials/partial1.html?lang=es', controller: 'MyCtrl'});
  // $routeProvider.when('/', {templateUrl: '/index.html', controller: 'CarouselCtrl'});
   $routeProvider.otherwise({redirectTo: '/home'});
 }]);
