@@ -140,30 +140,30 @@ function getWeekEvents(emailId) {
 				}
 				var parsedjson = JSON.parse(respJson);
 				console.log(parsedjson);
-				var output = '';
-				output += '<ul class="calendar-event">';
+				var output2 = '';
+				output2 += '<ul class="calendar-event">';
 				for (var i=0; i< desc; i++) {
-					output += '<li>';
-					output+= parsedjson.items[i].summary;
+					output2 += '<li>';
+					output2+= parsedjson.items[i].summary;
 					var start = parsedjson.items[i].start;
 					var startJson = JSON.stringify(start);
 					var parsedStart = JSON.parse(startJson);
 					//console.log(parsedStart.dateTime);
 					var sta = moment(parsedStart.dateTime).format("hh:mm A");
-					output+= '<div id="stTime">';
-					output+= sta;
-					output += ' - ';
+					output2+= '<div id="stTime">';
+					output2+= sta;
+					output2 += ' - ';
 					var end = parsedjson.items[i].end;
 					var endJson = JSON.stringify(end);
 					var parsedEnd = JSON.parse(endJson);
 					//console.log(parsedStart.dateTime);
 					var endt = moment(parsedEnd.dateTime).format("hh:mm A");
-					output += endt;
-					output += '</div>';
-					output += '</li>';
+					output2 += endt;
+					output2 += '</div>';
+					output2 += '</li>';
 			}	
-			output += '</ul>';
-			$('#week').click(showWeekEvents(output));
+			output2 += '</ul>';
+			$('#week').click(showWeekEvents(output2));
 		});
 	});
 	getTasksList();

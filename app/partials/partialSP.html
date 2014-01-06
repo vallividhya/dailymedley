@@ -1,0 +1,114 @@
+<div id="header-wrapper">
+	<nav-bar-top title="Medley diario">
+		<nav-location id="esh" href="/home">el hogar</nav-location>
+		<nav-location id="spanish" href="#/home">English </nav-location>
+		<nav-location id="esign" onclick="forceAuth()">el signo</nav-location>
+		<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+	</nav-bar-top>
+<div id="banner">
+	<div class="hero-unit">
+	<div carousel interval="3000">
+		<div slide ng-repeat="slide in slides" active="slide.active">
+			<img ng-src="{{slide.image}}" style="margin: auto;">
+			<div class="carousel-caption">
+				<h4>{{slide.text}}</h4>
+			</div>
+		</div>
+	</div> 
+</div> 
+</div>
+</div>
+<div id="content-wrapper">
+	<div id="content">	
+		<div class="container">
+			<div class="row">
+				<div class="4u" ng-controller="DateCtrl">
+					<section>
+						<header>
+							<h2 id="esc">el reloj</h2>
+							<h3>hoy es <span class="d"> {{v.Dt | date:'MMM  dd , yyyy'}} </span></h3>
+						</header>
+						<p class="text-center">
+							
+							<object data="img/siemens-clock.svg" type="image/svg+xml" width="200" height="200">
+								<param name="dial"               value="din 41091.1"/>
+								<param name="hourHand"           value="siemens"/>
+								<param name="minuteHand"         value="siemens"/>
+								<param name="secondHand"         value="din 41071.2"/>
+								<param name="minuteHandBehavior" value="stepping"/>
+								<param name="secondHandBehavior" value="swinging"/>
+								<param name="secondHandStopToGo" value="yes"/>
+								<param name="secondHandStopTime" value="1.5"/>
+								<param name="backgroundColor"    value="rgba(0,0,0,0)"/>
+								<param name="dialColor"          value="rgb(39,40,40)"/>
+								<param name="hourHandColor"      value="rgb(20,20,20)"/>
+								<param name="minuteHandColor"    value="rgb(20,20,20)"/>
+								<param name="secondHandColor"    value="rgb(160, 50, 40)"/>
+								<param name="axisCoverColor"     value="rgb(20,20,20)"/>
+								<param name="axisCoverRadius"    value="7"/>
+								<param name="updateInterval"     value="50"/>
+							</object>
+							
+						</p>	
+					</section>
+				</div>
+				<div class="4u" id="cal">
+					<section>
+						<header>
+							<h2 class="calendarimg">el calendario</h2>							
+						</header>			
+						<div>	
+							<div id="tb">
+								<ul id="calnav" class="nav nav-tabs">
+									<li class="active" id="navtod"><a> hoy</a></li>
+									<li><a id="week" onclick="showWeekEvents()">la semana</a></li>									
+								</ul>
+							</div>
+							<p id="ev">Inicie sesión en su cuenta de google para ver los eventos del calendario </p>	
+						</div>							
+					</section>
+				</div>
+				<div class="4u" ng-controller="DateCtrl">
+					<section>
+						<header>
+							<h2>la tarea</h2>
+								<div onclick="showLists()" id="bk">Task Lists</div>							
+						</header>
+						<div id='tasks'>
+							<p id="tasklist">
+								Inicie sesión en su cuenta de google para ver las tareas 							</p>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>						
+	</div>
+	<div id="content2">	
+		<div class="container">
+			<div class="row">
+				
+				<div class="4u" id="cli">
+					<section>
+						<header>
+							<h2 class="weatheimg">el clima</h2>
+								<img src="css/images/clear.gif" width:"50px" height:"50px"/>
+								<h3 id="loc"><h3>
+						</header>
+						<p class="text-center">
+							<p id="weather">
+								
+							</p>
+						</p>	
+					</section>
+				</div>
+			</div>
+		</div>						
+	</div>
+</div>
+
+
+
+
+
+
+
